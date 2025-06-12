@@ -1,0 +1,120 @@
+2025-06-12 09:55:17 [restartedMain] INFO  com.shippingsystem.ShippingSystemApplication - Starting ShippingSystemApplication using Java 21.0.2 with PID 34784 (D:\workspace\Shipping-system\target\classes started by Lin in D:\workspace\Shipping-system)
+2025-06-12 09:55:17 [restartedMain] DEBUG com.shippingsystem.ShippingSystemApplication - Running with Spring Boot v3.4.6, Spring v6.2.7
+2025-06-12 09:55:17 [restartedMain] INFO  com.shippingsystem.ShippingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-12 09:55:17 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-06-12 09:55:17 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-06-12 09:55:18 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-12 09:55:18 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-12 09:55:18 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-12 09:55:18 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2025-06-12 09:55:18 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1105 ms
+2025-06-12 09:55:18 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController' defined in file [D:\workspace\Shipping-system\target\classes\com\shippingsystem\controller\AuthController.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'com.shippingsystem.service.AuthService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2025-06-12 09:55:18 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2025-06-12 09:55:18 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-06-12 09:55:18 [restartedMain] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.shippingsystem.controller.AuthController required a bean of type 'com.shippingsystem.service.AuthService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.shippingsystem.service.AuthService' in your configuration.
+
+2025-06-12 10:13:15 [restartedMain] INFO  com.shippingsystem.ShippingSystemApplication - Starting ShippingSystemApplication using Java 21.0.2 with PID 14432 (D:\workspace\Shipping-system\target\classes started by Lin in D:\workspace\Shipping-system)
+2025-06-12 10:13:15 [restartedMain] DEBUG com.shippingsystem.ShippingSystemApplication - Running with Spring Boot v3.4.6, Spring v6.2.7
+2025-06-12 10:13:15 [restartedMain] INFO  com.shippingsystem.ShippingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-12 10:13:15 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-06-12 10:13:15 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-06-12 10:13:16 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-12 10:13:16 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-12 10:13:16 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-12 10:13:16 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2025-06-12 10:13:16 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 902 ms
+2025-06-12 10:13:16 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController' defined in file [D:\workspace\Shipping-system\target\classes\com\shippingsystem\controller\AuthController.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'com.shippingsystem.service.AuthService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2025-06-12 10:13:16 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2025-06-12 10:13:16 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-06-12 10:13:16 [restartedMain] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.shippingsystem.controller.AuthController required a bean of type 'com.shippingsystem.service.AuthService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.shippingsystem.service.AuthService' in your configuration.
+
+2025-06-12 10:13:50 [restartedMain] INFO  com.shippingsystem.ShippingSystemApplication - Starting ShippingSystemApplication using Java 21.0.2 with PID 5108 (D:\workspace\Shipping-system\target\classes started by Lin in D:\workspace\Shipping-system)
+2025-06-12 10:13:50 [restartedMain] DEBUG com.shippingsystem.ShippingSystemApplication - Running with Spring Boot v3.4.6, Spring v6.2.7
+2025-06-12 10:13:50 [restartedMain] INFO  com.shippingsystem.ShippingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-12 10:13:50 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-06-12 10:13:50 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-06-12 10:13:50 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-12 10:13:50 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-12 10:13:50 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-12 10:13:51 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2025-06-12 10:13:51 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 945 ms
+2025-06-12 10:13:51 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController' defined in file [D:\workspace\Shipping-system\target\classes\com\shippingsystem\controller\AuthController.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'com.shippingsystem.service.AuthService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2025-06-12 10:13:51 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2025-06-12 10:13:51 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-06-12 10:13:51 [restartedMain] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.shippingsystem.controller.AuthController required a bean of type 'com.shippingsystem.service.AuthService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.shippingsystem.service.AuthService' in your configuration.
+
+2025-06-12 10:14:37 [restartedMain] INFO  com.shippingsystem.ShippingSystemApplication - Starting ShippingSystemApplication using Java 21.0.2 with PID 25364 (D:\workspace\Shipping-system\target\classes started by Lin in D:\workspace\Shipping-system)
+2025-06-12 10:14:37 [restartedMain] DEBUG com.shippingsystem.ShippingSystemApplication - Running with Spring Boot v3.4.6, Spring v6.2.7
+2025-06-12 10:14:37 [restartedMain] INFO  com.shippingsystem.ShippingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-12 10:14:37 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-06-12 10:14:37 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-06-12 10:14:38 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-12 10:14:38 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-12 10:14:38 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-12 10:14:38 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2025-06-12 10:14:38 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 922 ms
+2025-06-12 10:14:38 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController' defined in file [D:\workspace\Shipping-system\target\classes\com\shippingsystem\controller\AuthController.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'com.shippingsystem.service.AuthService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2025-06-12 10:14:38 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2025-06-12 10:14:38 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-06-12 10:14:38 [restartedMain] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.shippingsystem.controller.AuthController required a bean of type 'com.shippingsystem.service.AuthService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.shippingsystem.service.AuthService' in your configuration.
+
