@@ -1,0 +1,140 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: shipping-system
+  
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shipping_system?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 300000
+      connection-timeout: 30000
+      max-lifetime: 1800000
+  
+  # JSON配置
+  jackson:
+    time-zone: Asia/Shanghai
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: NON_NULL
+    serialization:
+      write-dates-as-timestamps: false
+      fail-on-empty-beans: false
+    deserialization:
+      fail-on-unknown-properties: false
+
+  # 国际化配置
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+    fallback-to-system-locale: false
+
+# MyBatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.shippingsystem.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+    default-statement-timeout: 30
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 分页插件配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+# JWT配置
+jwt:
+  secret: shippingSystemSecretKey2024ForTokenGeneration
+  expiration: 7200000  # 2小时 (毫秒)
+  refresh-expiration: 604800000  # 7天 (毫秒)
+  header: Authorization
+  prefix: Bearer 
+
+# 地图API配置
+map:
+  amap:
+    key: your_amap_api_key_here
+    base-url: https://restapi.amap.com
+
+# 日志配置
+logging:
+  level:
+    com.shippingsystem: DEBUG
+    com.shippingsystem.mapper: DEBUG
+    org.springframework.security: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50} - %msg%n"
+  file:
+    name: logs/shipping-system.log
+    max-size: 100MB
+    max-history: 30
+
+# 系统配置
+system:
+  # 上传文件配置
+  file:
+    upload-path: /upload/
+    max-size: 10MB
+  
+  # 运价计算配置
+  freight:
+    base-rate: 0.5  # 基础费率：每公里每吨0.5元
+    fuel-surcharge-rate: 0.1  # 燃油附加费率：10%
+    seasonal-surcharge-rate: 0.05  # 季节性附加费率：5%
+    dangerous-goods-surcharge-rate: 0.2  # 危险品附加费率：20%
+
+# 开发环境配置
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/shipping_system_dev?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+
+logging:
+  level:
+    root: INFO
+    com.shippingsystem: DEBUG
+
+# 测试环境配置
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/shipping_system_test?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+
+# 生产环境配置
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql://localhost:3306/shipping_system_prod?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:123456}
+
+logging:
+  level:
+    root: WARN
+    com.shippingsystem: INFO
+  file:
+    name: /var/log/shipping-system/application.log 
