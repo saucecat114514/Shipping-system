@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shippingsystem.mapper.VesselMapper">
+
+    <!-- 船舶结果映射 -->
+    <resultMap id="BaseResultMap" type="com.shippingsystem.entity.Vessel">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="vessel_name" property="vesselName" jdbcType="VARCHAR"/>
+        <result column="mmsi" property="mmsi" jdbcType="VARCHAR"/>
+        <result column="imo" property="imo" jdbcType="VARCHAR"/>
+        <result column="flag_country" property="flagCountry" jdbcType="VARCHAR"/>
+        <result column="type_id" property="typeId" jdbcType="BIGINT"/>
+        <result column="teu_capacity" property="teuCapacity" jdbcType="INTEGER"/>
+        <result column="dwt" property="dwt" jdbcType="INTEGER"/>
+        <result column="service_speed" property="serviceSpeed" jdbcType="DECIMAL"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="created_at" property="createdAt" jdbcType="TIMESTAMP"/>
+        <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
+        <result column="is_deleted" property="isDeleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <!-- 船舶与类型关联结果映射 -->
+    <resultMap id="VesselWithTypeResultMap" type="com.shippingsystem.entity.Vessel" extends="BaseResultMap">
+        <association property="vesselType" javaType="com.shippingsystem.entity.VesselTypeDict">
+            <id column="type_id" property="id" jdbcType="BIGINT"/>
+            <result column="type_code" property="typeCode" jdbcType="VARCHAR"/>
+            <result column="type_name_zh" property="nameZh" jdbcType="VARCHAR"/>
+            <result column="type_name_en" property="nameEn" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
+
+    <!-- 基础SQL片段 -->
+    <sql id="Base_Column_List">
+        v.id, v.vessel_name, v.mmsi, v.imo, v.flag_country, v.type_id, v.teu_capacity, 
+        v.dwt, v.service_speed, v.status, v.created_at, v.updated_at, v.is_deleted
+    </sql>
+
+    <!-- 带类型信息的列 -->
+    <sql id="Vessel_With_Type_Column_List">
+        <include refid="Base_Column_List"/>,
+        vt.type_code, vt.name_zh as type_name_zh, vt.name_en as type_name_en
+    </sql>
+
+    <!-- 查询条件 -->
+    <sql id="Where_Clause">
+        <where>
+            v.is_deleted = 0
+            <if test="vesselName != null and vesselName != ''">
+                AND v.vessel_name LIKE CONCAT('%', #{vesselName}, '%')
+            </if>
+            <if test="mmsi != null and mmsi != ''">
+                AND v.mmsi = #{mmsi}
+            </if>
+            <if test="imo != null and imo != ''">
+                AND v.imo = #{imo}
+            </if>
+            <if test="flagCountry != null and flagCountry != ''">
+                AND v.flag_country = #{flagCountry}
+            </if>
+            <if test="typeId != null">
+                AND v.type_id = #{typeId}
+            </if>
+            <if test="status != null">
+                AND v.status = #{status}
+            </if>
+        </where>
+    </sql>
+
+    <!-- 根据ID查询船舶（包含类型信息） -->
+    <select id="selectById" parameterType="java.lang.Long" resultMap="VesselWithTypeResultMap">
+        SELECT 
+        <include refid="Vessel_With_Type_Column_List"/>
+        FROM vessel v
+        LEFT JOIN vessel_type_dict vt ON v.type_id = vt.id AND vt.is_deleted = 0
+        WHERE v.id = #{id} AND v.is_deleted = 0
+    </select>
+
+    <!-- 分页查询船舶列表 -->
+    <select id="selectByPage" parameterType="com.shippingsystem.dto.VesselQueryDTO" resultMap="VesselWithTypeResultMap">
+        SELECT
+        <include refid="Vessel_With_Type_Column_List"/>
+        FROM vessel v
+        LEFT JOIN vessel_type_dict vt ON v.type_id = vt.id AND vt.is_deleted = 0
+        <include refid="Where_Clause"/>
+        <if test="orderBy != null and orderBy != ''">
+            ORDER BY ${orderBy}
+            <if test="orderDir != null and orderDir != ''">
+                ${orderDir}
+            </if>
+        </if>
+        <if test="orderBy == null or orderBy == ''">
+            ORDER BY v.created_at DESC
+        </if>
+    </select>
+
+    <!-- 查询船舶总数 -->
+    <select id="selectCount" parameterType="com.shippingsystem.dto.VesselQueryDTO" resultType="java.lang.Long">
+        SELECT COUNT(*)
+        FROM vessel v
+        <include refid="Where_Clause"/>
+    </select>
+
+    <!-- 批量删除船舶 -->
+    <update id="deleteBatch" parameterType="java.util.List">
+        UPDATE vessel SET is_deleted = 1, updated_at = NOW()
+        WHERE id IN
+        <foreach collection="list" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+
+</mapper> 
